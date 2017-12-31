@@ -1,0 +1,27 @@
+body
+{
+ background-image: url(../images/bg.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-attachment: scroll;
+}
+#content
+{
+	margin:auto;
+	width:750px;
+	height:750px;
+}
+
+#body
+{
+ height:480px;
+ width:10px;
+ opacity: 0.6;
+ filter: alpha(opacity=50); 
+ background-position: center;
+ background:url(../images/White.jpg) no-repeat;
+}
+#body:hover {
+    opacity: 0.85;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}

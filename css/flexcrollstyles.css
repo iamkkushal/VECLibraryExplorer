@@ -1,0 +1,30 @@
+
+.scrollgeneric 
+{
+	line-height: 1000px;
+	font-size: 1px;
+	position: absolute;
+	top: 0; 
+	left: 0;
+}
+.vscrollerbase 
+{
+	width: 15px;
+	background-color: ;
+}
+.vscrollerbar 
+{
+	width: 15px;
+	background-color: black;
+}
+.vscrollerbar 
+{
+	background: #a7afb8 url(../images/div.png) -15px 0px repeat-y;
+	-moz-border-radius:7px;
+}
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="css/Home.css">
+ <link href='images/logo.jpg' rel='shortcut icon' type='image/ico'/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Velammal Engineering College OPAC</title>
+</head>
+<body>
+<div id="content">
+ <div id="header">
+    <div id="logo"> 
+	</div>
+	<div id="menu">
+	<div id="navigation">
+	<div id="li"></div>
+	<ul style="list-style: none;">
+    <li><a href="Home.php" class="nounderline">Home</a></li>
+    <li><a href="aboutus.php" class="nounderline">About us</a></li>
+    <li><a href="Help.php" class="nounderline">Help</a></li>
+    </ul>
+</div>
+</div>
+</div>
+<div id="body">
+<div id="searchbar">
+				<form method="post" action="search.php">
+          <input type="text" name="search" size="25" class="text1"/ placeholder="Search for Author, Title, Subject ">
+        </form>
+			</div>
+			<div id="table">
+	  	<table border="0" align="center" width="722">
+			<tr>
+				<th width="324" class="t1">Title
+				</th>
+				<th width="96" class="t1">Author</th>
+				<th width="103" class="t1">Copyright</th>
+				<th width="79" class="t1">Subject</th>
+			</tr>
+			
+		</table>
+	  </div>
+	  	<?php
+			  
+
+
+$conn=odbc_connect('localhost','root','kushalchand');
+if (!$conn)
+  {exit("Connection Failed: " . $conn);}
+
+  				$result = "";
+			
+				if(isset($_POST['submit'])){
+				
+					$acc = $_POST['search'];
+					$title = $_POST['search'];
+					$author= $_POST['search'];
+					$subc = $_POST['search'];
+					$subc2 = $_POST['search'];
+					$locate = $_POST['search'];
+					$call = $_POST['search'];
+					$subject = $_POST['search'];
+					
+					
+					
+					$access ="";
+					$totalt = "";
+					$totala = "";
+					$totalc = "";
+					$totalr = "";
+					$totalsb ="";
+					$totalpplace ="";
+					$totaloc="";
+					$totalcall="";
+					$totalsub="";
+					
+					
+					
+					
+				
+				$sql = "SELECT * FROM BookDetails WHERE Location LIKE '%$locate%' OR AccessionNo LIKE '%$acc%' OR Title LIKE '%$title%' OR Author LIKE '%$author%'  OR ISBNNumber LIKE '%$isbn%' OR  PublisherName LIKE '%$publisher%' OR  PlaceofPublication LIKE '%$publication%' OR CopyrightYear LIKE '%$copyright%'  ";
+					$rs1= odbc_exec($conn,$sql)
+					or die ("Error Execute [".$sql."]");
+					
+					
+						
+						while ($row = odbc_fetch_array($rs1))
+						{
+						
+						$accession = $row['AccessionNo'];
+						$title  = $row['Title'];
+						$author1 = $row['Author'];
+						$loc =$row['Location'];
+						$subf =$row['Subject'];
+						$call =$row['Call Number'];
+
+						
+						
+						echo"<table  align='center' width='680' class='tab'>
+						<tr >
+							<td width='305' class='s'><a class='s' href='sample.php?id=".$row['AccessionNo']."'>$totalt$title$totalt</a></td>
+							<hr>
+							<td width='125' class='s1'>$totala$author1$totala</td>
+							<td width='110' class='s1'>$totalsb$subf$totalsb</td>
+						</tr>
+						</table>";	
+						
+						
+						
+				}
+				
+			}
+			
+			
+				odbc_close($conn);
+						
+			
+			?>
+	 
+     
+	</div>  
+	<div id="footer">
+	 <center>
+      <span class="style5">
+        <a href="Home.php" class="nounderline"><span style="color:white">Home</a><span class="styl">&nbsp;|&nbsp;</span>
+	    <a href="aboutus.php" class="nounderline"><span style="color:white">About Us</a><span class="style1">&nbsp;|&nbsp;</span>
+	    <a href="help.php" class="nounderline"><span style="color:white">Help</a><span class="style1"></span>
+	  </span>
+    </center>
+	<br>
+      <center>
+	  <span class="yellobtm">© 2016 <a href="http://www.velammal.edu.in/" class="nounderline"><span style="color:white">Velammal Engineering College .</a> All Rights Reserved.</span>
+    </center>
+</div>
+</div>
+</body>
+</html>
